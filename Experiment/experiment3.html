@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Experiment 3 - DOM Manipulation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: darkblue;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        button {
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        input {
+            padding: 8px;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="heading">Welcome to JavaScript DOM</h1>
+
+    <p id="para">This is a sample paragraph for DOM manipulation.</p>
+
+    <br>
+
+    <input type="text" id="inputText" placeholder="Enter new heading">
+
+    <br><br>
+
+    <button onclick="changeHeading()">Change Heading</button>
+    <button onclick="changeColor()">Change Background</button>
+    <button onclick="increaseFont()">Increase Font Size</button>
+    <button onclick="togglePara()">Show/Hide Paragraph</button>
+
+    <script>
+        function changeHeading() {
+            let text = document.getElementById("inputText").value;
+            document.getElementById("heading").innerText = text;
+        }
+
+        function changeColor() {
+            document.body.style.backgroundColor = 
+                document.body.style.backgroundColor === "lightblue" 
+                ? "white" 
+                : "lightblue";
+        }
+
+        function increaseFont() {
+            let para = document.getElementById("para");
+            let currentSize = window.getComputedStyle(para).fontSize;
+            let newSize = parseInt(currentSize) + 2;
+            para.style.fontSize = newSize + "px";
+        }
+
+        function togglePara() {
+            let para = document.getElementById("para");
+            para.style.display = (para.style.display === "none") ? "block" : "none";
+        }
+    </script>
+
+</body>
+</html>
